@@ -116,7 +116,7 @@ $query = mysqli_query($koneksi, "SELECT * FROM tbl_mapel");
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Fakhrul Fanani Nugroho</span>
+						<span>Copyright &copy; Madadi</span>
 					</div>
 				</div>
 			</footer>

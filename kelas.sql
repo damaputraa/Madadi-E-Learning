@@ -120,7 +120,7 @@ CREATE TABLE `tbl_siswa` (
 --
 
 INSERT INTO `tbl_siswa` (`id`, `nis`, `nama`, `agama`, `tempat_lahir`, `tanggal_lahir`, `alamat`) VALUES
-(1, 1234, 'Fakhrul Fanani Nugroho', 'Islam', 'Cilacap', '2002-07-15', 'Sidareja'),
+(1, 1234, 'Madadi', 'Islam', 'Cilacap', '2002-07-15', 'Sidareja'),
 (3, 1235, 'Muhammad Yudha Gustiam', 'Islam', 'Cilacap', '2002-07-23', 'Karangpucung'),
 (4, 1236, 'Asep Resky Ardani', 'Islam', 'Cilacap', '2002-01-07', 'Wanareja');
 
@@ -142,7 +142,7 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `nama`, `username`, `password`) VALUES
-(15, 'Fakhrul Fanani Nugroho', 'nugrohoff', '$2y$10$eU7.6Xgd9IoxyK2radJVueCIJVGB1AAeU.h4P0HBAUYwyl09ce7.O'),
+(15, 'Madadi', 'nugrohoff', '$2y$10$eU7.6Xgd9IoxyK2radJVueCIJVGB1AAeU.h4P0HBAUYwyl09ce7.O'),
 (17, 'Admin', 'admin123', '$2y$10$3r41FoRb1IUjSMv.edS/VulBObJ.7MaBtRd1agKzV8mRYxqb.knV2');
 
 --

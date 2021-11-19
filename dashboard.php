@@ -176,7 +176,7 @@ $guru = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(guru_pengampu) A
 		<footer class="sticky-footer bg-white">
 		<div class="container my-auto">
 		<div class="copyright text-center my-auto">
-		<span>Copyright &copy; Fakhrul Fanani Nugroho</span>
+		<span>Copyright &copy; Madadi</span>
 		</div>
 		</div>
 		</footer>
