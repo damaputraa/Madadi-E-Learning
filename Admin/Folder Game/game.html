@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Edukasi</title>
+    <script src="https://kit.fontawesome.com/335e32d04e.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Outfit:wght@200;400;700&display=swap');
+        
+        :root{
+            --pink: #ff5994;
+            --oren: #ff9668;
+            --kuning: #c8f001;
+            --hijau: #2bf156;
+            --biru: #529aff;
+            --ungu: rgb(240, 0, 240);
+            --biru-hijau: rgb(15, 211, 136);
+        }
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }*::after, *::before{
+            box-sizing: border-box;
+        }html, body{
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            scrollbar-color: gray var(--hijau);
+            transition: scrollbar-color 0.2s linear;
+            scrollbar-width: thin;
+        }body::-webkit-scrollbar{
+            width: thin;
+        }
+        
+        a{
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }a:hover{
+            color: black;
+            text-decoration: underline;
+        }p{
+            margin: 10px 0px;
+        }.white-scrollbar{
+            scrollbar-color: gray #FFFFFF !important;
+        }td{
+            padding: 5px;
+        }ol, ul{
+            padding: 0px 15px;
+            margin: 10px 0px;
+        }
+
+        .bg-hijau{
+            background-color: var(--hijau) !important;
+        }.bg-pink{
+            background-color: var(--pink) !important;
+        }.bg-putih{
+            background-color: #fff !important;
+        }.bg-oren{
+            background-color: var(--oren) !important;
+        }.bg-gray{
+            background-color: rgb(216, 216, 216) !important;
+        }.bg-kuning{
+            background-color: var(--kuning) !important;
+        }.bg-biru{
+            background-color: var(--biru) !important;
+        }.bg-biru-hijau{
+            background-color: var(--biru-hijau) !important;
+        }.bg-ungu{
+            background-color: var(--ungu);
+        }
+        
+        .border-coklat{
+            border: 3px solid var(--coklat) !important;
+        }.border-ungu{
+            border: 3px solid var(--ungu) !important;
+        }.border-color-biru{
+            border-color: var(--biru) !important;
+        }.border-color-ungu{
+            border-color: var(--ungu) !important;
+        }.border-color-putih{
+            border-color: white !important;
+        }.border{
+            border: 3px solid;
+        }
+        
+        .font-hijau{
+            color: var(--hijau) !important;
+        }.font-pink{
+            color: var(--pink) !important;
+        }.font-putih{
+            color: #fff !important;
+        }.font-oren{
+            color: var(--oren) !important;
+        }.font-kuning{
+            color: var(--kuning) !important;
+        }.font-gray{
+            color: gray !important;
+        }.font-heading{
+            font-size: 400%;
+            margin: 5px 0px;
+            line-height: 0.9em;
+        }.font-sub-heading{
+            font-size: 250%;
+            font-weight: bold;
+            margin: -5px 0px -5px;
+        }.font-normal{
+            font-size: 100%;
+        }.font-concert-one{
+            font-family: 'Concert One', sans-serif !important;
+        }.font-thin{
+            font-weight: 300 !important;
+        }.font-bold{
+            font-weight: 700 !important;
+        }.font-heading::first-letter{
+            color: var(--ungu);
+        }.font-ungu{
+            color: var(--ungu) !important;
+        }.font-larger{
+            font-size: 180%;
+        }.first-letter-underline::first-letter{
+            text-decoration: underline;
+        }.bottom-space{
+            margin-bottom: 10px;
+        }.top-large-space{
+            margin-top: 70px;
+        }.font-large{
+            font-size: 130%;
+        }.font-hitam{
+            color: black !important;
+        }.top-medium-space{
+            margin-top: 65px;
+        }.top-small-space{
+            margin-top: 30px;
+        }.font-weight-normal{
+            font-weight: normal !important;
+        }
+
+        .flex{
+            display: flex !important;
+        }.dir-column{
+            flex-direction: column !important;
+        }.dir-row{
+            flex-direction: row !important;
+        }.grow{
+            flex-grow: 1 !important;
+        }.nowrap{
+            flex-wrap: nowrap !important;
+        }.wrap{
+            flex-wrap: wrap !important;
+        }.space-around{
+            justify-content: space-around !important;
+        }.space-between{
+            justify-content: space-between !important;
+        }.align-center{
+            align-items: center !important;
+        }.justify-center{
+            justify-content: center !important;
+        }.align-start{
+            align-items: flex-start !important;
+        }.align-end{
+            align-items: flex-end !important;
+        }
+
+        .p-center{
+            text-align: center !important;
+        }.p-right{
+            text-align: right !important;
+        }.p-left{
+            text-align: left !important;
+        }.p-justify{
+            text-align: justify !important;
+        }
+
+        .radius-10px{
+            border-radius: 10px;
+        }.radius-5px{
+            border-radius: 5px;
+        }.radius-8px{
+            border-radius: 8px;
+        }.radius-circle{
+            border-radius: 50%;
+        }
+
+        .txt-white{
+            color: white !important;
+        }.txt-black{
+            color: black !important;
+        }.txt-bold{
+            font-weight: 700 !important;
+        }.txt-thin{
+            font-weight: 300 !important;
+        }
+
+        .overflow-scroll{
+            overflow: scroll !important;
+        }.overflow-hidden{
+            overflow: hidden !important;
+        }
+
+        .pos-fixed{
+            position: fixed !important;
+        }.pos-relative{
+            position: relative !important;
+        }.pos-absolute{
+            position: absolute !important;
+        }.fixed-center{
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+        }.static-center{
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }.top-0px{
+            top: 0px !important;
+        }.float-right{
+            float: right !important;
+        }.float-left{
+            float: left !important;
+        }.clear-both{
+            clear: both !important;
+        }
+
+        .dis-block{
+            display: block !important;
+        }.dis-inline{
+            display: inline !important;
+        }.dis-inline-block{
+            display: inline-block !important;
+        }.dis-none{
+            display: none !important;
+        }
+
+        .small-container{
+            max-width: 600px !important;
+        }.very-small-container{
+            width: 100%;
+        }.med-container{
+            max-width: 800px !important;
+        }.big-container{
+            max-width: 1000px !important;
+        }.wrapper{
+            padding: 10px;
+        }.fill{
+            width: 100%;
+        }.fill-small{
+            width: 70%;
+        }.filler-sm{
+            width: calc(100% + 30px);
+            height: 100px;
+            margin: -25px -15px ;
+            margin-bottom: 10px;
+        }.half{
+            width: calc(50% - 20px) !important;
+        }
+
+        .thin-shadow{
+            box-shadow: 0px 0px 5px 0px black !important;
+        }.blured-shadow{
+            box-shadow: 0px 0px 10px -4px black !important;
+        }.block-shadow{
+            box-shadow: 0px 0px 0px 1px black;
+        }
+
+        .height-50px{
+            height: 50px !important;
+        }.height-100px{
+            height: 100px !important;
+        }.height-70px{
+            height: 70px !important;
+        }
+
+        .z-index-30{
+            z-index: 30 !important;
+        }.z-index-20{
+            z-index: 20 !important;
+        }.z-index-10{
+            z-index: 10 !important;
+        }.z-index-5{
+            z-index: 5 !important;
+        }
+
+        @media screen and (max-width: 600px){
+            .medium-container{
+                width: calc(50% - 20px);
+            }
+        }
+        @media screen and (min-width: 600px) and (max-width: 800px){
+            .medium-container{
+                width: calc(50% - 20px);
+            }
+        }
+        @media screen and (min-width: 800px){
+            .medium-container{
+                width: 360px;
+            }
+        }
+
+        
+        .game{
+            width: 100vw;
+        }
+
+        .top-nav{
+            width: 100vw;
+            height: 65px;
+            position: fixed;
+            top: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }.nav-link{
+            font-size: 130%;
+            margin: 20px 10px;
+        }
+
+        .logo{
+            font-size: 250%;
+            letter-spacing: -1px;
+            display: block;
+            margin-right: 20px;
+        }.logo::before{
+            content: "G";
+            display: inline-block;
+            font-weight: bold;
+            transform: rotate(-25deg);
+        }.logo::after{
+            content: "ee";
+            text-decoration: underline;
+        }
+
+        .main{
+            margin: 0px;
+            margin-top: 65px;
+            padding: 20px;
+            min-height: calc(100vh - 65px);
+        }
+
+
+        .card{
+            width: 250px;
+            height: 250px;
+            margin: 20px;
+            overflow: hidden;
+            padding: 20px;
+            transition: box-shadow 0.1s linear;
+        }.card:hover{
+            box-shadow: 0px 0px 15px -5px;
+        }
+        .game-title{
+            font-size: 180%;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            margin: -20px -20px 10px -20px;
+            width: calc(100% + 40px);
+        }
+        .btn{
+            font-size: 120%;
+            border-radius: 50px;
+            padding: 7px 25px;
+            font-weight: bold;
+            color: white;
+            transition: all 0.1s linear;
+            border: none;
+            cursor: pointer;
+        }.btn:hover{
+            opacity: 0.8;
+        }.btn-icon{
+            font-size: 400%;
+            color: white;
+            margin: 10px;
+            cursor: pointer;
+        }.btn-icon:hover{
+            text-shadow: 0px 0px 5px;
+        }
+
+        .letter-box{
+            font-size: 150%;
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            margin: 4px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: box-shadow 0.1s linear;
+        }.incorrect{
+            animation: incorrect 0.5s;
+        }.letter-choice .letter-box:hover{
+            box-shadow: 0px 0px 7px 0px;
+        }
+
+        @keyframes incorrect {
+            0%{
+                background-color: red;
+                transform: rotate(20deg);
+                color: white;
+            }25%{
+                background-color: red;
+                transform: rotate(-20deg);
+                color: white;
+            }100%{
+                background-color: red;
+                transform: rotate(0deg);
+                color: white;
+            }50%{
+                background-color: red;
+                transform: rotate(20deg);
+                color: white;
+            }75%{
+                background-color: red;
+                transform: rotate(-20deg);
+                color: white;
+            }
+        }
+
+        .mark-container{
+            position: fixed;
+            width: 30px;
+            height: 200px;
+            bottom: 0px;
+            right: 0px;
+            z-index: 10;
+            margin: 20px;
+            border-radius: 100px;
+            overflow: hidden;
+            border: 2px solid white;
+            transform: rotate(180deg);
+        }.mark{
+            width: 100%;
+            height: 0%;
+            background-color: white;
+            position: relative;
+            transition: height 0.2s ease;
+            
+        }.progress{
+            position: fixed;
+            margin: 20px;
+            top: 70px;
+            right: 0px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px 0px;
+        }
+
+        .quiz-answer{
+            background-color: white;
+            font-size: 150%;
+            text-align: center;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }.quiz-answer:hover{
+            box-shadow: 0px 0px 5px 0px black;
+        }
+
+        
+
+
+    </style>
+</head>
+<body>
+    <div class="game bg-pink">
+        <nav class="top-nav bg-putih thin-shadow">
+            <div class="logo">am</div>
+            <div class="flex dir-row align-center">
+                <a href="#" class="nav-link">Main Menu</a>
+                <a href="#" class="nav-link">About Us</a>
+            </div>
+        </nav>
+        <div class="wrapper main flex dir-row wrap justify-center dis-none" id="menu utama">
+            <div class="font-putih font-sub-heading font-weight-normal fill p-center">Learn</div>
+            <div class="fill flex justify-center">
+                <p class="small-container p-center font-large">In similique ratione adipisci, labore incidunt nulla repellendus ab molestias! Ipsam perferendis a ipsa quae, rem velit eveniet adipisci dignissimos porro necessitatibus.</p>
+            </div>
+            <div class="card bg-putih radius-10px flex dir-column space-between align-center">
+                <div class="game-title bg-biru">Anagrams</div>
+                <button class="btn bg-biru">Learn</button>
+            </div>
+            <div class="card bg-putih radius-10px flex dir-column space-between align-center">
+                <div class="game-title bg-hijau">Anagrams</div>
+                <button class="btn bg-hijau">Learn</button>
+            </div>
+            <div class="card bg-putih radius-10px flex dir-column space-between align-center">
+                <div class="game-title bg-oren">Anagrams</div>
+                <button class="btn bg-oren">Learn</button>
+            </div>
+
+            <div class="font-putih font-sub-heading font-weight-normal fill p-center">Games and Quiz</div>
+            <div class="fill flex justify-center">
+                <p class="small-container p-center font-large">In similique ratione adipisci, labore incidunt nulla repellendus ab molestias! Ipsam perferendis a ipsa quae, rem velit eveniet adipisci dignissimos porro necessitatibus.</p>
+            </div>
+            <div class="card bg-putih radius-10px flex dir-column space-between align-center">
+                <div class="game-title bg-kuning">Anagrams</div>
+                <button class="btn bg-kuning">Play</button>
+            </div>
+            <div class="card bg-putih radius-10px flex dir-column space-between align-center">
+                <div class="game-title bg-biru-hijau">Quiz</div>
+                <button class="btn bg-biru-hijau">Play</button>
+            </div>
+            <div class="card bg-putih radius-10px flex dir-column space-between align-center">
+                <div class="game-title bg-ungu">Anagrams</div>
+                <button class="btn bg-ungu">Play</button>
+            </div>
+        </div>
+
+        <div class="wrapper main dis-none bg-biru" id="anagram-game">
+            <div class="mark-container">
+                <div class="mark"></div>
+            </div>
+            <div class="progress">
+                <div class="font-large">Time left</div>
+                <div class="time font-larger">01:00</div>
+                <br>
+                <div class="font-large">Total point</div>
+                <div class="point font-larger">0</div>
+            </div>
+            <div class="fill flex dir-column align-center justify-center" style="height: 400px;">
+                <br><br>
+                <div class="answer-box flex wrap">
+
+                </div><br>
+                <div class="letter-choice flex wrap">
+
+                </div>
+                <div>
+                    
+                </div>
+                <div class="control">
+                    <div class="font-sub-heading fill font-putih p-center">Anagrams</div><br>
+                    <i class="fas fa-home btn-icon" onclick=""></i>
+                    <i class="fas fa-play btn-icon play-btn" onclick="startAnagram()"></i>
+                </div>
+            </div>
+            <script>
+                let answerBox = document.getElementsByClassName('answer-box')[0];
+                let letterChoice = document.getElementsByClassName('letter-choice')[0];
+                let color = ['RED', 'GREEN', 'BLUE', 'PURPLE', 'YELLOW', 'PINK', 'MAGENTA', 'ORANGE', 'WHITE', 'BLACK', 'AQUAMARINE', 'BROWN', 'CYAN', 'FUCHSIA', 'INDIGO', 'LIME', 'PASTEL', 'SILVER', 'TEAL', 'TURQUOIES', 'VIOLET'];
+
+                function shuffle(array){
+                    let currentIndex = array.length, randomIndex;
+                    while (currentIndex != 0){
+                        randomIndex = Math.floor(Math.random() * currentIndex);
+                        currentIndex--;
+
+                        [array[currentIndex], array[randomIndex]] = [
+                        array[randomIndex], array[currentIndex]];
+                    }
+                    return array;
+                }
+                function randomColor(){
+                    return color[Math.round(Math.random() * (color.length - 1))];
+                }
+
+                class Mark{
+                    constructor(option){
+                        this.pointElem = option.pointElem;
+                        if(option.markElem){
+                            this.markElem = option.markElem;
+                            this.div = option.div;
+                            this.markHeight = 0;
+                        }
+                        this.maxPoint = option.maxPoint;
+                    }
+
+                    plusMark(){
+                        this.markElem.style.height = this.markHeight + (100 / this.div) + "%";
+                        this.markHeight += (100 / this.div);
+                    }minusMark(){
+                        if(this.markHeight > 0){
+                            this.markElem.style.height = this.markHeight - (100 / this.div) + "%";
+                            this.markHeight -= (100 / this.div);
+                        }
+                    }plusPoint(){
+                        this.pointElem.innerHTML = this.getCurrentPoint() + Math.round(this.getPoint());
+                    }resetMark(){
+                        this.markElem.style.height = '0%';
+                    }resetPoint(){
+                        this.pointElem.innerHTML = '0';
+                    }
+
+                    getMarkHeight(){
+                        return this.markHeight;
+                    }getCurrentPoint(){
+                        return parseInt(this.pointElem.innerHTML);
+                    }getPoint(){
+                        return (this.maxPoint * this.markHeight) / 100;
+                    }
+                }
+
+                class Control{
+                    constructor(option){
+                        this.elem = option.elem;
+                        this.playBtn = option.playBtn;
+                        this.hide();
+                    }
+                    hide(){
+                        this.elem.style.display = 'none';
+                    }show(){
+                        this.elem.style.display = 'block';
+                    }
+                }
+
+                class Anagrams{
+                    constructor(word){
+                        
+
+                        //kosongin container
+                        this.clearContainer();
+                        this.mark = new Mark({
+                            pointElem: document.getElementsByClassName('point')[0],
+                            markElem: document.getElementsByClassName('mark')[0],
+                            div: word.length,
+                            maxPoint: 100
+                        });
+
+                        this.answer = new Array();
+                        this.countDown = 0;
+
+                        this.letterArray = new Array();
+                        this.shuffleLetter = new Array();
+
+                        for(let i = 0; i < word.length; i++){
+                            this.letterArray.push(word.charAt(i));
+                            this.shuffleLetter.push(word.charAt(i));
+
+                            //bikin kotak jawaban dan masukin ke array
+                            let letterBox = document.createElement('div');
+                            letterBox.classList.add('letter-box');
+                            this.answer.push(letterBox);
+                            answerBox.append(letterBox);
+                        }
+                        
+                        //shuffel word supaya pilihan acak
+                        shuffle(this.shuffleLetter);
+
+                        //append bikin pilihan huruf beserta isinya
+                        for(let i = 0; i < this.shuffleLetter.length; i++){
+                            let letterBox = document.createElement('div');
+                            let removeAnim;
+
+                            letterBox.classList.add('letter-box');
+                            letterBox.innerHTML = this.shuffleLetter[i];
+                            letterBox.addEventListener('click', () => {
+                                if(letterBox.innerHTML == this.letterArray[this.countDown]){
+                                    clearTimeout(removeAnim);
+                                    this.answer[this.countDown].innerHTML = letterBox.innerHTML;
+                                    this.countDown++;
+                                    letterBox.remove();
+                                    this.mark.plusMark();
+                                    if(this.countDown == word.length){
+                                        this.mark.plusPoint();
+                                        setTimeout(() => {
+                                            this.mark.resetMark();
+                                            anagrams = new Anagrams(randomColor()); 
+                                        }, 1000);
+                                    }
+                                }else{
+                                    letterBox.classList.add('incorrect');
+                                    this.mark.minusMark();
+                                    removeAnim = setTimeout(() => {
+                                        letterBox.classList.remove('incorrect');
+                                    }, 500);
+                                }
+                            });
+                            letterChoice.append(letterBox); 
+                        }
+                        clearInterval(timer);
+                        timer = setInterval(() => {
+                            startTimer();
+                        }, 1000);
+                    }
+                    clearContainer(){
+                        answerBox.textContent = "";
+                        letterChoice.textContent = "";
+                    }
+                }
+                let anagrams = null;
+                let control = null;
+
+                function startAnagram(){
+                    anagrams = new Anagrams(randomColor());
+                    anagrams.mark.resetPoint();
+                    control = new Control({
+                        elem: document.getElementsByClassName('control')[0],
+                        playBtn: document.getElementsByClassName('play-btn')[0],
+                    });
+                    control.hide();
+                }
+                function stopAnagrams(){
+                    anagrams.clearContainer();
+                    anagrams = null;
+                    control = null;
+                }
+                
+                let timeELem = document.getElementsByClassName('time')[0];
+                let second = 60;
+                function startTimer(){
+                    if(second < 60){
+                        timeELem.innerHTML = '00:' + second;
+                        if(second < 10){
+                            timeELem.innerHTML = '00:' + '0' + second;
+                        }
+                    }
+                    if(second > 0){
+                        second--;
+                    }else{
+                        if(anagrams){
+                            anagrams.clearContainer();
+                            anagrams.mark.resetMark();
+                            anagrams = null;
+                        }
+                        control.show();
+                        clearInterval(timer);
+                        second = 60;
+                    }
+                }
+                let timer;
+                
+            </script>
+        </div>
+
+        <div class="wrapper main dis-block bg-hijau" id="quiz-game">
+            <div class="fill flex dir-column align-center justify-center" style="height: 400px;">
+                <br><br>
+                <div class="question-box flex wrap font-putih font-sub-heading p-center">
+                    5 + 9 = ?
+                </div><br>
+                <div class="answer-choice flex wrap fill justify-center">
+                </div>
+                <div>
+                    
+                </div>
+                <div class="control dis-none">
+                    <div class="font-sub-heading fill font-putih p-center">Quiz</div><br>
+                    <i class="fas fa-home btn-icon" onclick=""></i>
+                    <i class="fas fa-play btn-icon play-btn" onclick="startQuiz()"></i>
+                </div>
+            </div>
+            <script>
+                let questionBox = document.getElementsByClassName('question-box')[0];
+                let answerChoice = document.getElementsByClassName('answer-choice')[0];
+
+                class Question{
+                    /*
+                    | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    | untuk bagian quiz rencananya hanya untuk soal mtk
+                    | kecuali digabung dengan php untuk mengenerate soal dan jawaban lain
+                    | kemudian baru dibuat soalnya dengan javascript
+                    | jika hanya untuk mtk, maka hanya cukup dengan javascript saja
+                    | buat men generate random soal dan jawaban
+                    | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    */
+                    constructor(question = '', answer = [], correctAnswer){
+                        questionBox.innerHTML = question;
+                        this.answer = answer;
+                        this.correctAnswer = correctAnswer;
+
+                        for(let i = 0; i < answer.length; i++){
+                            let div = document.createElement('div');
+                            div.className = 'medium-container quiz-answer';
+                            div.innerHTML = answer[i];
+
+                            div.addEventListener('click', () => {
+                                if(div.innerHTML == this.correctAnswer){
+                                    //tambah poin, ganti soal
+                                    quiz.plusPoint(100);
+                                }else{
+                                    //animasi pilihan salah, kurangin nyawa?
+                                    alert('jawaban salah, kurangin nyawa');
+                                }
+                            });
+
+                            answerChoice.append(div);
+                        }
+
+                    }
+                }
+
+                class Quiz{
+                    constructor(questionList, answerList, correctAnswerList){
+                        this.poin = 0;
+                        this.heart = 5;
+                        this.questionList = questionList;
+                        this.answerList = answerList;
+                        this.correctAnswerList = correctAnswerList;
+                        this.questionCount = 0;
+                    }
+
+                    createQuestion(){
+                        question = new Question(
+                            this.questionList[this.questionCount],
+                            this.answerList[this.questionCount],
+                            this.correctAnswerList[this.questionCount]
+                        );
+                    }
+                    plusPoint(point){
+                        this.point += point;
+                    }
+                    minHeart(){
+                        this.heart--;
+                    }
+                }
+
+                class timeElapse{
+                    constructor(elem){
+                        this.elem = elem;
+                        this.sec = 0;
+                        this.min = 0;
+                        this.start = setInterval(() => {
+                            this.elem.innerHTML = this.getMinute() + ':' + this.getSecond();
+                            sec++;
+                        }, 1000);
+                    }
+
+                    getSecond(){
+                        if(this.sec < 10){
+                            return '0' + this.sec;
+                        }else if(sec == 60){
+                            this.min++;
+                            this.sec = 0;
+                            return '00';
+                        }else{
+                            return this.sec;
+                        }
+                    }getMinute(){
+                        if(this.minute < 10){
+                            return '0' + this.min;
+                        }else{
+                            return this.min;
+                        }
+                    }stop(){
+                        clearInterval(this.start);
+                    }
+                }
+
+                let quiz = new Question('3 + 4 = ?', [6, 7, 8, 9], 7);
+                let question;
+                let timeElapse;
+
+            </script>
+        </div>
+    </div>
+</body>
+</html>
